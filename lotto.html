@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>lotto number mixer</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <style>
+       body{margin: 0;padding: 0;color:#333}
+       .area{position: relative;font-size: 0;padding-top: 5px;border-bottom:1px solid #ccc}
+        .area .loading_bar{position: absolute;left: 0;top: 0;width:0;height: 5px;background-color: #ff8282;
+           -webkit-transition:width 0.3s;
+           transition:width 0.3s
+       }
+       .area>div{font-size:11px;box-sizing: border-box}
+       .lotto_board{display: inline-block;position: relative;width: 50%;height:600px;overflow:auto;border-top:1px solid #ccc}
+       .lotto_board table{width: 100%;text-align: center;border-collapse: collapse}
+       .lotto_board table thead tr th{padding: 8px 0;border-bottom:1px solid #f5f5f5}
+       .lotto_board table tbody tr td{padding: 4px 0;}
+       .lotto_board table tbody tr:first-child{background-color: #f9f9f9;}
+       .num_lank{display: inline-block;width: 50%;border-left:1px solid #ccc;height: 600px;overflow:auto;border-top:1px solid #ccc}
+       .num_lank table{width: 100%;text-align: center;border-collapse: collapse}
+       
+       .num_lank table thead tr th{padding: 8px 0;border-bottom:1px solid #f5f5f5}
+       .num_lank table tbody tr td{padding: 4px 0;}
+       
+       .num_lank table tbody tr:nth-child(1) td{background: #f7f7f7;}
+       .num_lank table tbody tr:nth-child(2) td{background: #f6f6f6;}
+       .num_lank table tbody tr:nth-child(3) td{background: #f5f5f5;}
+       .num_lank table tbody tr:nth-child(4) td{background: #f4f4f4;}
+       .num_lank table tbody tr:nth-child(5) td{background: #f3f3f3;}
+       .num_lank table tbody tr:nth-child(6) td{background: #f2f2f2;}
+       .num_lank table tbody tr:nth-child(7) td{background: #f1f1f1;}
+       
+   </style>
+ </head>
+ <body>
+    <div class="area">
+        <div class="loading_bar"></div>
+         <div class="lotto_board">
+              <table>
+                 <colgroup>
+                     <col width="100">
+                     <col width="70">
+                     <col width="70">
+                     <col width="70">
+                     <col width="70">
+                     <col width="70">
+                     <col width="70">
+                     <col width="70">
+                 </colgroup>
+                  <thead>
+                      <tr>
+                          <th>Date</th>
+                          <th>Nom.1</th>
+                          <th>Nom.2</th>
+                          <th>Nom.3</th>
+                          <th>Nom.4</th>
+                          <th>Nom.5</th>
+                          <th>Nom.6</th>
+                          <th>Bonus.Num</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+              </table>
+          </div>
+          <div class="num_lank">
+              <table>
+                 <colgroup>
+                     <col width="33%">
+                     <col width="33%">
+                     <col width="34%">
+                 </colgroup>
+                  <thead>
+                      <th>순위</th>
+                      <th>번호</th>
+                      <th>당첨횟수</th>
+                  </thead>
+                  <tbody>
+                      <tr class="n1">
+                          <td>1</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n2">
+                          <td>2</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n3">
+                          <td>3</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n4">
+                          <td>4</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n5">
+                          <td>5</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n6">
+                          <td>6</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n7">
+                          <td>7</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n8">
+                          <td>8</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n9">
+                          <td>9</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n10">
+                          <td>10</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n11">
+                          <td>11</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n12">
+                          <td>12</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n13">
+                          <td>13</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n14">
+                          <td>14</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n15">
+                          <td>15</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n16">
+                          <td>16</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n17">
+                          <td>17</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n18">
+                          <td>18</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n19">
+                          <td>19</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n20">
+                          <td>20</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n21">
+                          <td>21</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n22">
+                          <td>22</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n23">
+                          <td>23</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n24">
+                          <td>24</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n25">
+                          <td>25</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n26">
+                          <td>26</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n27">
+                          <td>27</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n28">
+                          <td>28</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n29">
+                          <td>29</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n30">
+                          <td>30</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n31">
+                          <td>31</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n32">
+                          <td>32</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n33">
+                          <td>33</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n34">
+                          <td>34</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n35">
+                          <td>35</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n36">
+                          <td>36</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n37">
+                          <td>37</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n38">
+                          <td>38</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n39">
+                          <td>39</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n40">
+                          <td>40</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n41">
+                          <td>41</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n42">
+                          <td>42</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n43">
+                          <td>43</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n44">
+                          <td>44</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                      <tr class="n45">
+                          <td>45</td>
+                          <td class="num"></td>
+                          <td class="hit"></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  <script>
+      var want_turn = 791; /////원하는 루프 회차
+      var for_i = 0;
+      var num_array = [{num:1,hit:0},{num:2,hit:0},{num:3,hit:0},{num:4,hit:0},{num:5,hit:0},{num:6,hit:0},{num:7,hit:0},{num:8,hit:0},{num:9,hit:0},{num:10,hit:0},{num:11,hit:0},{num:12,hit:0},{num:13,hit:0},{num:14,hit:0},{num:15,hit:0},{num:16,hit:0},{num:17,hit:0},{num:18,hit:0},{num:19,hit:0},{num:20,hit:0},{num:21,hit:0},{num:22,hit:0},{num:23,hit:0},{num:24,hit:0},{num:25,hit:0},{num:26,hit:0},{num:27,hit:0},{num:28,hit:0},{num:29,hit:0},{num:30,hit:0},{num:31,hit:0},{num:32,hit:0},{num:33,hit:0},{num:34,hit:0},{num:35,hit:0},{num:36,hit:0},{num:37,hit:0},{num:38,hit:0},{num:39,hit:0},{num:40,hit:0},{num:41,hit:0},{num:42,hit:0},{num:43,hit:0},{num:44,hit:0},{num:45,hit:0}];
+      
+      $.ajax({
+            type : 'GET',
+            url : "http://lotto.kaisyu.com/api?method=get",
+            dataType : 'jsonp',
+            async:false,
+            contentType: 'application/javascript',
+            jsonpCallback : "callback",
+            success : function (data) {
+                makeTable(data.gno);
+            }
+        });
+      function makeTable(turn){
+          
+          $.ajax({
+            type : 'GET',
+            url : "http://lotto.kaisyu.com/api?method=get&gno="+(turn-for_i),
+              dataType : 'jsonp',
+              async:false,
+              contentType: 'application/javascript',
+              jsonpCallback : "callback",
+              success : function (data) {
+                  if(for_i==turn){
+                      return false;
+                  }else{
+                      for_i = for_i + 1;
+                      $(".lotto_board table tbody").append("<tr><td>"+data.gdate+"</td><td>"+data.nums[0]+"</td><td>"+data.nums[1]+"</td><td>"+data.nums[2]+"</td><td>"+data.nums[3]+"</td><td>"+data.nums[4]+"</td><td>"+data.nums[5]+"</td><td>"+data.bnum+"</td></tr>")
+                      $(".area .loading_bar").css("width",(for_i/want_turn*100)+"%");
+                      num_array[data.nums[0]-1].hit++;
+                      num_array[data.nums[1]-1].hit++;
+                      num_array[data.nums[2]-1].hit++;
+                      num_array[data.nums[3]-1].hit++;
+                      num_array[data.nums[4]-1].hit++;
+                      num_array[data.nums[5]-1].hit++;
+                      makeTable(turn);
+                  }
+              }
+          });
+          
+          var sord_array = num_array.sort(function(a,b){
+              return b['hit'] - a['hit'];
+          });
+                                          
+                                          
+          $.each(sord_array,function(i,val){
+             $(".num_lank table tbody .n"+(i+1)).find(".num").text(val.num);
+             $(".num_lank table tbody .n"+(i+1)).find(".hit").text(val.hit);
+          });
+          
+      }
+      
+      
+      
+      
+      /*
+      var my_data = "";
+      var turn = 100;
+      for(var i=0;i<turn;i++){
+          $.ajax({
+                type : 'GET',
+                url : "http://lotto.kaisyu.com/api?method=get&gno=789",
+                  dataType : 'jsonp',
+                  contentType: 'application/javascript',
+                  jsonpCallback : "callback",
+                success : function (data) {
+
+                }
+            });
+      }
+      */
+  </script>
+ </body>
+</html>
