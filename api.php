@@ -1,25 +1,38 @@
 <?php
- 
-        $url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=1";
- 
-        $is_post = false;
-        $ch = curl_init();
- 
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, $is_post);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        $response = curl_exec($ch);        
-        $data=json_decode($response,true);
-        // var_dump($data);
-        echo $data['drwNoDate'];
+  include 'db.php';
+  
+  $no = $_POST['no'];
+  
+  $url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=".$no;
 
-        
+  $is_post = false;
+  $ch = curl_init();
 
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_POST, $is_post);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+  $response = curl_exec($ch);        
+  $data=json_decode($response,true);
 
-        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
- 
-        //echo json_encode($data);
+  $drwNo = $data['drwNo'];
+  $drwNoDate = $data['drwNoDate'];
+  $drwNo1 = $data['drwNo1'];
+  $drwNo2 = $data['drwNo2'];
+  $drwNo3 = $data['drwNo3'];
+  $drwNo4 = $data['drwNo4'];
+  $drwNo5 = $data['drwNo5'];
+  $drwNo6 = $data['drwNo6'];
+  $bnusNo = $data['bnusNo'];
+  $firstAccumamnt = $data['firstAccumamnt'];
+  $firstPrzwnerCo = $data['firstPrzwnerCo'];
+  $firstWinamnt = $data['firstWinamnt'];
+  $returnValue = $data['returnValue'];
+  $totSellamnt = $data['totSellamnt'];
+
+  $sql = "INSERT INTO `ottol`(`drwNo`, `drwNoDate`, `drwNo1`, `drwNo2`, `drwNo3`, `drwNo4`, `drwNo5`, `drwNo6`, `bnusNo`, `firstAccumamnt`, `firstPrzwnerCo`, `firstWinamnt`, `returnValue`, `totSellamnt`) VALUES ($drwNo,'$drwNoDate',$drwNo1,$drwNo2,$drwNo3,$drwNo4,$drwNo5,$drwNo6,$bnusNo,$firstAccumamnt,$firstPrzwnerCo,$firstWinamnt,'$returnValue',$totSellamnt)";
+
+  mysqli_query($db,$sql);
+  mysqli_close($db);
 
 ?>
