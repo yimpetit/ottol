@@ -311,10 +311,9 @@
       $.ajax({
             type : 'POST',
             url : "api.php",
-            dataType : 'jsonp',
+            dataType : 'json',
             async:false,
             contentType: 'application/javascript',
-            jsonpCallback : "callback",
             success : function (data) {
                 console.log(data);
             }
