@@ -308,79 +308,17 @@
           </div>
       </div>
   <script>
-      var want_turn = 791; /////원하는 루프 회차
-      var for_i = 0;
-      var num_array = [{num:1,hit:0},{num:2,hit:0},{num:3,hit:0},{num:4,hit:0},{num:5,hit:0},{num:6,hit:0},{num:7,hit:0},{num:8,hit:0},{num:9,hit:0},{num:10,hit:0},{num:11,hit:0},{num:12,hit:0},{num:13,hit:0},{num:14,hit:0},{num:15,hit:0},{num:16,hit:0},{num:17,hit:0},{num:18,hit:0},{num:19,hit:0},{num:20,hit:0},{num:21,hit:0},{num:22,hit:0},{num:23,hit:0},{num:24,hit:0},{num:25,hit:0},{num:26,hit:0},{num:27,hit:0},{num:28,hit:0},{num:29,hit:0},{num:30,hit:0},{num:31,hit:0},{num:32,hit:0},{num:33,hit:0},{num:34,hit:0},{num:35,hit:0},{num:36,hit:0},{num:37,hit:0},{num:38,hit:0},{num:39,hit:0},{num:40,hit:0},{num:41,hit:0},{num:42,hit:0},{num:43,hit:0},{num:44,hit:0},{num:45,hit:0}];
-      
       $.ajax({
-            type : 'GET',
-            url : "http://lotto.kaisyu.com/api?method=get",
+            type : 'POST',
+            url : "api.php",
             dataType : 'jsonp',
             async:false,
             contentType: 'application/javascript',
             jsonpCallback : "callback",
             success : function (data) {
-                makeTable(data.gno);
+                console.log(data);
             }
-        });
-      function makeTable(turn){
-          
-          $.ajax({
-            type : 'GET',
-            url : "http://lotto.kaisyu.com/api?method=get&gno="+(turn-for_i),
-              dataType : 'jsonp',
-              async:false,
-              contentType: 'application/javascript',
-              jsonpCallback : "callback",
-              success : function (data) {
-                  if(for_i==turn){
-                      return false;
-                  }else{
-                      for_i = for_i + 1;
-                      $(".lotto_board table tbody").append("<tr><td>"+data.gdate+"</td><td>"+data.nums[0]+"</td><td>"+data.nums[1]+"</td><td>"+data.nums[2]+"</td><td>"+data.nums[3]+"</td><td>"+data.nums[4]+"</td><td>"+data.nums[5]+"</td><td>"+data.bnum+"</td></tr>")
-                      $(".area .loading_bar").css("width",(for_i/want_turn*100)+"%");
-                      num_array[data.nums[0]-1].hit++;
-                      num_array[data.nums[1]-1].hit++;
-                      num_array[data.nums[2]-1].hit++;
-                      num_array[data.nums[3]-1].hit++;
-                      num_array[data.nums[4]-1].hit++;
-                      num_array[data.nums[5]-1].hit++;
-                      makeTable(turn);
-                  }
-              }
-          });
-          
-          var sord_array = num_array.sort(function(a,b){
-              return b['hit'] - a['hit'];
-          });
-                                          
-                                          
-          $.each(sord_array,function(i,val){
-             $(".num_lank table tbody .n"+(i+1)).find(".num").text(val.num);
-             $(".num_lank table tbody .n"+(i+1)).find(".hit").text(val.hit);
-          });
-          
-      }
-      
-      
-      
-      
-      /*
-      var my_data = "";
-      var turn = 100;
-      for(var i=0;i<turn;i++){
-          $.ajax({
-                type : 'GET',
-                url : "http://lotto.kaisyu.com/api?method=get&gno=789",
-                  dataType : 'jsonp',
-                  contentType: 'application/javascript',
-                  jsonpCallback : "callback",
-                success : function (data) {
-
-                }
-            });
-      }
-      */
+        });      
   </script>
  </body>
 </html>
