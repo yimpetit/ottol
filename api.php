@@ -18,12 +18,12 @@
 
   $drwNo = $data['drwNo'];
   $drwNoDate = $data['drwNoDate'];
-  $drwNo1 = $data['drwNo1'];
-  $drwNo2 = $data['drwNo2'];
-  $drwNo3 = $data['drwNo3'];
-  $drwNo4 = $data['drwNo4'];
-  $drwNo5 = $data['drwNo5'];
-  $drwNo6 = $data['drwNo6'];
+  $drwNo1 = $data['drwtNo1'];
+  $drwNo2 = $data['drwtNo2'];
+  $drwNo3 = $data['drwtNo3'];
+  $drwNo4 = $data['drwtNo4'];
+  $drwNo5 = $data['drwtNo5'];
+  $drwNo6 = $data['drwtNo6'];
   $bnusNo = $data['bnusNo'];
   $firstAccumamnt = $data['firstAccumamnt'];
   $firstPrzwnerCo = $data['firstPrzwnerCo'];
