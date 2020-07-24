@@ -14,7 +14,6 @@
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
   $response = curl_exec($ch);        
   $data=json_decode($response,true);
-  var_dump($data);
 
   $drwNo = $data['drwNo'];
   $drwNoDate = $data['drwNoDate'];
