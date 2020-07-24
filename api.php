@@ -32,7 +32,9 @@
 
   $sql = "INSERT INTO `ottol`(`drwNo`, `drwNoDate`, `drwNo1`, `drwNo2`, `drwNo3`, `drwNo4`, `drwNo5`, `drwNo6`, `bnusNo`, `firstAccumamnt`, `firstPrzwnerCo`, `firstWinamnt`, `returnValue`, `totSellamnt`) VALUES ($drwNo,'$drwNoDate',$drwNo1,$drwNo2,$drwNo3,$drwNo4,$drwNo5,$drwNo6,$bnusNo,$firstAccumamnt,$firstPrzwnerCo,$firstWinamnt,'$returnValue',$totSellamnt)";
 
-  echo mysqli_query($db,$sql);
+  echo $sql;
+
+  mysqli_query($db,$sql);
   mysqli_close($db);
 
 ?>
