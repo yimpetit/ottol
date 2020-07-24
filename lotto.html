@@ -311,11 +311,11 @@
       $.ajax({
             type : 'POST',
             url : "api.php",
-            data:{no:"1"},
-            async:false,
-            contentType: 'application/javascript',
+            data:{no:"1"},            
             success : function (data) {
                 console.log(data);
+            },error:function(data){
+                console.log('error');
             }
         });      
   </script>
