@@ -12,7 +12,7 @@
         $response = curl_exec($ch);        
         $data=json_decode($response,true);
         // var_dump($data);
-        printf($data['drwNoDate']);
+        echo $data['drwNoDate'];
 
         
 
@@ -20,6 +20,6 @@
         $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
  
-        echo json_encode($data);
+        //echo json_encode($data);
 
 ?>
