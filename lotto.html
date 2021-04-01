@@ -3,7 +3,6 @@
  <head>
   <meta charset="UTF-8">
   <title>lotto number mixer</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <style>
        body{margin: 0;padding: 0;color:#333}
        .area{position: relative;font-size: 0;padding-top: 5px;border-bottom:1px solid #ccc}
@@ -307,7 +306,13 @@
               </table>
           </div>
       </div>
+      <input type="text" name="dates">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+      <script type="text/javascript" src="daterangepicker.js"></script>
   <script>
+      $('input[name="dates"]').daterangepicker();
+function makeTable(turn){
       $.ajax({
             type : 'POST',
             url : "api.php",
@@ -318,6 +323,8 @@
                 console.log('error');
             }
         });      
+
+}
   </script>
  </body>
 </html>
